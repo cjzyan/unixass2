@@ -1,3 +1,4 @@
+#Add new repo and down load the packages
 class repository{
 exec { 'wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-10.noarch.rpm ; sudo  rpm -ivh epel-release-7-10.noarch.rpm ; sudo rm epel-release-7-10.noarch.rpm':
 path => ['/usr/bin','/usr/sbin','/usr/local/bin'],
