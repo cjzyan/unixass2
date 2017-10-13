@@ -12,7 +12,7 @@ ensure => running,
 augeas { "sshd_config":
 context => "/etc/ssh/sshd_config",
 changes => [
-"directive PermitRootLogin no",
+"set PermitRootLogin no",
 ],
 }
 }
