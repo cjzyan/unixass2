@@ -1,9 +1,15 @@
-#Change interval_time in puppet config file by intervaltime to 900 seconds-15min
+#schedule run interval 3 time per hour
 class schedule{
-
-augeas { 'interval_time' :
-context => '/etc/puppetlabs/puppet/puppet.conf',
-changes => [ 'set runiterval = 900', ]
+schedule { 'hourly':
+  period => hourly,
+  repeat => 3,
 }
+exec { 'interval':
+        path => ['/usr/bin','/usr/sbin','/usr/local/bin','/opt/puppetlabs/bin/puppet','/usr/local/bin/puppet'],
+  schedule => 'hourly',
+  command => '/usr/local/bin/puppet agent -t',
+  user => 'root'
+}
+
 }
 
